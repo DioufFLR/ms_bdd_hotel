@@ -51,3 +51,20 @@ FROM hotel
 INNER JOIN chambre ON cha_hot_id = hot_id
 WHERE cha_capacite > 1 AND hot_ville = 'Bretou'
 
+-- question 10
+
+SELECT cli_nom, hot_nom, res_date
+FROM hotel
+JOIN chambre on chambre.cha_hot_id = hotel.hot_id
+JOIN reservation on reservation.res_cha_id = chambre.cha_id
+JOIN client on client.cli_id = reservation.res_cli_id
+
+-- question 11
+
+SELECT sta_nom, hot_nom, cha_numero, cha_capacite
+FROM station
+JOIN hotel on hotel.hot_sta_id = station.sta_id
+JOIN chambre on chambre.cha_hot_id = hotel.hot_sta_id
+
+-- question 12
+
