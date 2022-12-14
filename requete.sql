@@ -109,3 +109,9 @@ WHERE cli_nom = 'Squire'
 
 -- question 17
 
+SELECT AVG(DATEDIFF(res_date_fin, res_date_debut)) AS 'Durée moyenne', sta_nom AS 'nom de la station'
+FROM reservation
+JOIN chambre ON res_cha_id = cha_id
+JOIN hotel ON cha_hot_id = hot_id
+JOIN station ON hot_sta_id = sta_id
+GROUP BY sta_nom
