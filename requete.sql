@@ -68,3 +68,44 @@ JOIN chambre on chambre.cha_hot_id = hotel.hot_sta_id
 
 -- question 12
 
+SELECT cli_nom, hot_nom, res_date_debut, DATEDIFF(res_date_fin, res_date_debut)
+FROM client
+JOIN reservation ON reservation.res_cli_id = client.cli_id
+JOIN chambre ON chambre.cha_id = reservation.res_cha_id
+JOIN hotel ON hotel.hot_id = chambre.cha_hot_id
+
+-- question 13
+
+SELECT COUNT(hot_id), sta_nom 
+FROM hotel  
+INNER JOIN station ON station.sta_id = hotel.hot_sta_id 
+GROUP BY sta_nom
+
+-- question 14
+
+SELECT COUNT(cha_id), sta_id
+FROM chambre
+JOIN hotel ON hotel.hot_id = chambre.cha_hot_id
+JOIN station ON station.sta_id = hotel.hot_sta_id
+GROUP BY sta_nom
+
+-- question 15
+
+SELECT COUNT(cha_id), sta_id
+FROM chambre
+JOIN hotel ON hotel.hot_id = chambre.cha_hot_id
+JOIN station ON station.sta_id = hotel.hot_sta_id
+WHERE chambre.cha_capacite > 1 
+GROUP BY sta_nom
+
+-- question 16
+
+SELECT hot_nom
+FROM hotel
+JOIN chambre ON chambre.cha_hot_id = hotel.hot_id
+JOIN reservation ON reservation.res_cha_id = chambre.cha_id
+JOIN client ON client.cli_id = reservation.res_cli_id
+WHERE cli_nom = 'Squire'
+
+-- question 17
+
